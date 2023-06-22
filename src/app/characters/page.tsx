@@ -3,12 +3,13 @@ import React from "react";
 import { publish_key, hashed_key } from "../../../env.config";
 import Image from "next/image";
 import { getCharacters } from "@/services";
+import MainLayout from "@/layouts/Main";
 
 async function CharactersPage() {
   const characters = await getCharacters();
   console.log(characters);
   return (
-    <>
+    <MainLayout>
       <h1>characters page</h1>
       {characters.map((character: any) => {
         return (
@@ -25,7 +26,7 @@ async function CharactersPage() {
           </Link>
         );
       })}
-    </>
+    </MainLayout>
   );
 }
 

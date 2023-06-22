@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import { getComics } from "@/services";
 import Title from "@/components/Title";
+import MainLayout from "@/layouts/Main";
 
 async function ComicsPage() {
   const comics = await getComics();
