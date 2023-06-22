@@ -1,9 +1,11 @@
+"use client";
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
 import { getComics } from "@/services";
 import Title from "@/components/Title";
 import MainLayout from "@/layouts/Main";
+import withAuth from "@/hooks/withAuth";
 
 async function ComicsPage() {
   const comics = await getComics();
@@ -29,4 +31,4 @@ async function ComicsPage() {
   );
 }
 
-export default ComicsPage;
+export default withAuth(ComicsPage);

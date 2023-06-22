@@ -1,8 +1,10 @@
 "use client";
-import React from "react";
+import { UserContext } from "@/context";
+import React, { useContext } from "react";
 
 function Title() {
-  return <div>This is a Title Component</div>;
+  const { email, password } = useContext(UserContext);
+  return <div>User email: {email}</div>;
 }
 
 export default Title;
