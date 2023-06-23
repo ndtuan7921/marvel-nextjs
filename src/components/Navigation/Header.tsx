@@ -54,6 +54,7 @@ function Header() {
         {/* login section */}
         <Link
           href="/login"
+          className="next-link"
           style={{
             padding: "0 15px",
             height: "100%",
@@ -71,14 +72,15 @@ function Header() {
         </Link>
 
         {/* logo */}
-        <Link href="/" className="logo">
+        <Link href="/" className="next-link">
           {/* <HeaderLogo /> */}
-          <Image src={HeaderLogo} alt={"header-logo"} />
+          <Image className="header-logo" src={HeaderLogo} alt={"header-logo"} />
         </Link>
 
         {/* search */}
         <Link
           href="/search"
+          className="next-link"
           style={{
             padding: "0 15px",
             color: "white",
@@ -105,11 +107,7 @@ function Header() {
             {NavItems.map((item) => {
               return (
                 <li className="menu-nav-items" key={item.id}>
-                  <Link
-                    href={item.url}
-                    className="menu-nav-items-links"
-                    prefetch={false}
-                  >
+                  <Link href={item.url} className="next-link">
                     <Typography text={item.label} color={"white"} />
                   </Link>
                 </li>

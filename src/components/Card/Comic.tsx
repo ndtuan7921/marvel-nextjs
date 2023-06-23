@@ -30,17 +30,17 @@ type ComicCardBaseProps = Pick<
 interface ComicCardProps extends ComicCardBaseProps {}
 
 export default function ComicCard(props: ComicCardProps) {
-  const { id, title, thumbnail, creators } = props;
-  // let creatorsText;
-  // if (creators.items) {
-  // 	creatorsText = creators.items
-  // 		.slice(0, 2)
-  // 		.map((item: any) => item.name)
-  // 		.join(", ");
-  // }
+  const { title, thumbnail, creators } = props;
+  let creatorsText;
+  if (creators.items) {
+    creatorsText = creators.items
+      .slice(0, 2)
+      .map((item: any) => item.name)
+      .join(", ");
+  }
 
   return (
-    <MuiCard sx={{ maxWidth: 216, maxHeight: 480 }}>
+    <MuiCard sx={{ maxWidth: 216, maxHeight: 480 }} className="comic-card">
       <MuiCardActionArea>
         <Image
           src={`${thumbnail.path}.${thumbnail.extension}`}
@@ -56,11 +56,7 @@ export default function ComicCard(props: ComicCardProps) {
             color={"#151515"}
             sx={{ fontWeight: "700" }}
           />
-          <Typography
-            text={"creatorsText"}
-            variant="caption"
-            color={"#767676"}
-          />
+          <Typography text={creatorsText} variant="caption" color={"#767676"} />
         </CardContentStyled>
       </MuiCardActionArea>
     </MuiCard>

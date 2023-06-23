@@ -3,7 +3,10 @@ import { styled, InputBase } from "@mui/material";
 
 import { InputProps as MuiInputProps } from "@mui/material";
 
-type InputBaseProps = Pick<MuiInputProps, "onChange" | "placeholder" | "value">;
+type InputBaseProps = Pick<
+  MuiInputProps,
+  "onChange" | "placeholder" | "value" | "className"
+>;
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "#767676",

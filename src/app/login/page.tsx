@@ -61,7 +61,7 @@ function LoginPage() {
         <Image src={HeaderLogo} alt={"header-logo"} />
 
         <Typography
-          text={"Enter your email address"}
+          text={"Login to continue"}
           color={"#E62429"}
           variant="body2"
           sx={{ margin: "1rem 0", textTransform: "uppercase" }}
@@ -71,15 +71,18 @@ function LoginPage() {
           value={emailInput}
           onChange={(e) => setEmailInput(e.target.value)}
           placeholder="Email"
+          className="input-field email-input"
         />
         <TextField
           value={passwordInput}
           onChange={(e) => setPasswordInput(e.target.value)}
           placeholder="Password"
+          className="input-field password-input"
         />
         <Button
           onClick={handleLogin}
           text={"continue"}
+          className="btn-login"
           sx={{ marginTop: "10px" }}
         />
       </Box>

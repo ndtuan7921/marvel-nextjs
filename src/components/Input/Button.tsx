@@ -8,7 +8,7 @@ import Typography from "../Typography";
 
 type ButtonBaseProps = Pick<
   MuiButtonProps,
-  "variant" | "color" | "fullWidth" | "sx"
+  "variant" | "color" | "fullWidth" | "sx" | "className"
 >;
 
 interface ButtonProps extends ButtonBaseProps {
@@ -17,7 +17,7 @@ interface ButtonProps extends ButtonBaseProps {
 }
 
 function Button(props: ButtonProps) {
-  const { text = "Load more", sx, onClick } = props;
+  const { text = "Load more", sx, onClick, ...rest } = props;
 
   return (
     <MuiButton
@@ -29,6 +29,7 @@ function Button(props: ButtonProps) {
         background: "#E62429",
         "&:hover": { background: "#9F0013" },
       }}
+      {...rest}
     >
       <Typography text={text} color={"white"} />
     </MuiButton>

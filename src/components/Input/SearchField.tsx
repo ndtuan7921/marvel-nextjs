@@ -1,6 +1,9 @@
 "use client";
 import { SearchOutlined } from "@mui/icons-material";
-import { InputBase, styled } from "@mui/material";
+import { InputBase, TextField, styled } from "@mui/material";
+import { useRef, useState } from "react";
+import Button from "./Button";
+import { searchCharacters } from "@/services";
 
 const Search = styled("div")(({ theme }) => ({
   borderBottom: "2px solid #151515",
@@ -16,7 +19,7 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
   color: "#202020",
 }));
 
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
+const StyledInputBase = styled(TextField)(({ theme }) => ({
   color: "inherit",
 
   "& .MuiInputBase-input": {
@@ -39,12 +42,23 @@ interface SearchFieldProps {
 }
 
 function SearchField({ placeholder = "SEARCH ..." }: SearchFieldProps) {
+  const [input, setInput] = useState("");
+  // const inputRef = useRef();
+  const handleSearch = async () => {
+    const data = await searchCharacters(input);
+    console.log(data);
+  };
   return (
     <Search>
       <SearchIconWrapper>
         <SearchOutlined />
       </SearchIconWrapper>
-      <StyledInputBase placeholder={placeholder} fullWidth />
+      <StyledInputBase
+        placeholder={placeholder}
+        fullWidth
+        onChange={(e) => setInput(e.target.value)}
+      />
+      <Button text={"Search"} onClick={handleSearch} />
     </Search>
   );
 }
