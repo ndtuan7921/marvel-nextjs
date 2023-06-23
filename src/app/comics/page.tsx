@@ -6,29 +6,31 @@ import { getComics } from "@/services";
 import Title from "@/components/Title";
 import MainLayout from "@/layouts/Main";
 import withAuth from "@/hooks/withAuth";
+import { ListCard } from "@/components/List";
+import { ComicCard } from "@/components/Card";
 
 async function ComicsPage() {
   const comics = await getComics();
+  console.log(comics);
   return (
     <>
-      <h1>comics page</h1>
-      <Title />
-      {comics.map((comic: any) => {
-        return (
-          <Link href={`comics/${comic.id}`} key={comic.id}>
-            <h4>{comic.title}</h4>
-            <Image
-              src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
-              alt={"comic-thumbnail"}
-              width={300}
-              height={500}
-            />
-            <hr />
-          </Link>
-        );
-      })}
+      {comics ? (
+        <ListCard
+          title={"Read Comics For Free"}
+          data={comics}
+          renderItem={(comic) => (
+            <Link href={`/comics/${comic.id}`} key={comic.id}>
+              <ComicCard {...comic} />
+            </Link>
+          )}
+        />
+      ) : (
+        <h1>COMICS PAGE</h1>
+      )}
     </>
   );
 }
 
-export default withAuth(ComicsPage);
+// export default withAuth(ComicsPage);
+
+export default ComicsPage;
